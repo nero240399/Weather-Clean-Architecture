@@ -18,8 +18,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         def properties = new Properties()
         properties.load(rootProject.file("local.properties").newDataInputStream())
 
@@ -29,13 +27,13 @@ android {
                 "\"${properties.getProperty("OPENWEATHER_API_KEY")}\"")
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    buildFeatures {
-        compose true
+    buildFeatures{
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility = 1.8
@@ -48,9 +46,6 @@ android {
         exclude 'META-INF/AL2.0'
         exclude 'META-INF/LGPL2.1'
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion "$composeCompilerVersion"
-    }
 }
 
 /*
@@ -58,17 +53,18 @@ android {
  all versions in a single place. This improves readability and helps managing project complexity.
  */
 dependencies {
-    // Jetpack Compose
-    implementation "androidx.activity:activity-compose:$activityComposeVersion"
-    implementation "androidx.compose.material:material:$composeVersion"
-    implementation "androidx.lifecycle:lifecycle-runtime-compose:$archLifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$archLifecycleVersion"
+    // App dependencies
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+
+    // Architecture Components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinXSerializationJsonVersion"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$retrofit2KotlinXSerializationConverterVersion"
-    implementation "io.coil-kt:coil-compose:$coilComposeVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$kotlinXSerializationConverterVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
 
     // Hilt

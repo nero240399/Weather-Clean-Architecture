@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="40dp">
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_background"
+            android:iconifiedByDefault="false" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <TextView
+            android:id="@+id/date_tv"
+            style="@style/TextAppearance.Weather.Body2"
+            android:paddingStart="24dp"
+            android:paddingEnd="0dp" />
+
+        <TextView
+            android:id="@+id/temperature_tv"
+            style="@style/TextAppearance.Weather.Headline2"
+            android:paddingStart="24dp"
+            android:paddingEnd="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/weather_tv"
+            style="@style/TextAppearance.Weather.Body1"
+            android:paddingStart="24dp"
+            android:paddingEnd="0dp" />
+    </LinearLayout>
+</layout>
